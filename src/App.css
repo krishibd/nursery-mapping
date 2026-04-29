@@ -1,0 +1,404 @@
+/* ── Custom styles for Kurigram Nursery Registry ── */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #0d1f15;
+  --ink2: #2a4035;
+  --ink3: #4a6858;
+  --border: #c3ddd0;
+  --bg: #f0f7f3;
+  --bg2: #e2f0e8;
+  --leaf: #0d3320;
+  --leaf2: #1a5c38;
+  --leaf3: #2e8b57;
+  --leaf4: #52b07a;
+  --leaf5: #a8dbbe;
+  --amber: #d97706;
+  --amber2: #fef3c7;
+  --red: #c0392b;
+  --red2: #fde8e8;
+  --blue: #1d6ea6;
+  --white: #ffffff;
+  --card-r: 10px;
+  --shadow: 0 1px 8px rgba(13,51,32,.10);
+  --shadow2: 0 4px 20px rgba(13,51,32,.16);
+  --font: 'Noto Serif Bengali', serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  overflow: hidden;
+  height: 100dvh;
+}
+
+/* Map styles */
+.leaflet-container {
+  font-family: var(--font) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: var(--shadow2) !important;
+  font-family: var(--font) !important;
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+}
+
+/* Scrollbar */
+.custom-scroll::-webkit-scrollbar {
+  width: 3px;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.18s ease both;
+}
+
+/* Pills */
+.pill {
+  padding: 4px 11px;
+  border-radius: 16px;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--ink3);
+  transition: all 0.16s;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.pill.active {
+  background: var(--leaf2);
+  color: #fff;
+  border-color: var(--leaf2);
+}
+
+/* Filter chips */
+.chip-btn {
+  padding: 3px 10px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--ink3);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip-btn.active {
+  background: var(--leaf2);
+  color: #fff;
+  border-color: var(--leaf2);
+}
+.chip-btn.warn.active {
+  background: var(--amber);
+  border-color: var(--amber);
+}
+.chip-btn.danger.active {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+/* Cards */
+.ncard {
+  border: 1px solid var(--border);
+  border-radius: var(--card-r);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  border-left: 3px solid var(--border);
+  background: var(--white);
+}
+.ncard:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--leaf4);
+}
+.ncard.selected {
+  border-color: var(--leaf2);
+  background: var(--bg);
+  box-shadow: var(--shadow2);
+}
+.ncard.ok { border-left-color: var(--leaf3); }
+.ncard.mob { border-left-color: var(--amber); }
+.ncard.gps { border-left-color: var(--red); }
+.ncard.both { border-left-color: #9b59b6; }
+
+/* Status chips */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 9px;
+}
+.status-chip.green { background: var(--bg2); color: var(--leaf2); }
+.status-chip.amber { background: var(--amber2); color: #92400e; }
+.status-chip.red { background: var(--red2); color: var(--red); }
+.status-chip.blue { background: #e0f2fe; color: #075985; }
+.status-chip.purple { background: #f3e8ff; color: #6b21a8; }
+
+/* Progress bar */
+.progress-track {
+  height: 5px;
+  background: var(--bg2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--leaf2), var(--leaf4));
+  border-radius: 3px;
+  transition: width 1.2s ease;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 22px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: var(--shadow2);
+  max-width: 90vw;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Form styles */
+.form-input {
+  font-family: var(--font);
+  font-size: 14px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.form-input:focus {
+  border-color: var(--leaf2);
+}
+.form-input.highlight {
+  border-color: var(--amber);
+  background: #fffdf0;
+}
+
+.form-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Section box */
+.section-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--card-r);
+  padding: 12px;
+}
+.section-box h3 {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink3);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 9px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* KV rows */
+.kv-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+.kv-row:last-child {
+  border: none;
+}
+.kv-key {
+  font-size: 11px;
+  color: var(--ink3);
+}
+.kv-val {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+  max-width: 200px;
+}
+
+/* Species row */
+.species-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+  font-size: 11px;
+  border-bottom: 1px solid var(--border);
+}
+.species-row:last-child {
+  border: none;
+}
+.species-row span {
+  color: var(--ink3);
+}
+.species-row b {
+  font-family: var(--mono);
+  color: var(--leaf2);
+}
+
+/* Miss card */
+.miss-card {
+  background: var(--white);
+  border: 1.5px solid var(--amber2);
+  border-radius: var(--card-r);
+  padding: 11px 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.miss-card:hover {
+  border-color: var(--amber);
+  box-shadow: var(--shadow);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--leaf2);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: 0 2px 8px rgba(26,92,56,.25);
+}
+.btn-primary:hover {
+  background: var(--leaf);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--ink2);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-family: var(--font);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-secondary:hover {
+  border-color: var(--leaf4);
+}
+
+.btn-call {
+  background: #1d6ea6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-family: var(--font);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-call:hover {
+  background: #155d8f;
+}
+
+/* Export buttons */
+.exp-btn {
+  flex: 1;
+  padding: 8px;
+  background: var(--leaf);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.exp-btn:hover {
+  background: var(--leaf2);
+}
+.exp-btn.sec {
+  background: var(--white);
+  color: var(--ink2);
+  border: 1.5px solid var(--border);
+}
+.exp-btn.sec:hover {
+  border-color: var(--leaf4);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .responsive-body {
+    flex-direction: column !important;
+  }
+  .map-panel {
+    height: 40vh !important;
+    flex: none !important;
+  }
+  .side-panel {
+    width: 100% !important;
+    border-left: none !important;
+    border-top: 1px solid var(--border);
+  }
+}
